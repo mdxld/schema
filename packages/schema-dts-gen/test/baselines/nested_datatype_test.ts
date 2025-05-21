@@ -59,16 +59,16 @@ test(`baseline_${basename(import.meta.url)}`, async () => {
   expect(actual).toMatchInlineSnapshot(`
 "/** Used at the top-level node to indicate the context for the JSON-LD objects used. The context provided in this type is compatible with the keys and URLs in the rest of this generated file. */
 export type WithContext<T extends Thing> = T & {
-    "@context": "https://schema.org";
+    "$context": "https://schema.org";
 };
 export interface Graph {
-    "@context": "https://schema.org";
-    "@graph": readonly Thing[];
+    "$context": "https://schema.org";
+    "$graph": readonly Thing[];
 }
 type SchemaValue<T> = T | readonly T[];
 type IdReference = {
     /** IRI identifying the canonical address of this object. */
-    "@id": string;
+    "$id": string;
 };
 type InputActionConstraints<T extends ActionBase> = Partial<{
     [K in Exclude<keyof T, \`@\${string}\`> as \`\${string & K}-input\`]: PropertyValueSpecification | string;
@@ -85,12 +85,12 @@ interface ArabicTextBase extends PronounceableTextBase {
     "arabicPhoneticText"?: SchemaValue<Text>;
 }
 interface ArabicTextLeaf extends ArabicTextBase {
-    "@type": "ArabicText";
+    "$type": "ArabicText";
 }
 export type ArabicText = ArabicTextLeaf | string;
 
 interface EnglishTextLeaf extends PronounceableTextBase {
-    "@type": "EnglishText";
+    "$type": "EnglishText";
 }
 export type EnglishText = EnglishTextLeaf | string;
 
@@ -100,7 +100,7 @@ interface PronounceableTextBase extends Partial<IdReference> {
     "phoneticText"?: SchemaValue<Text>;
 }
 interface PronounceableTextLeaf extends PronounceableTextBase {
-    "@type": "PronounceableText";
+    "$type": "PronounceableText";
 }
 export type PronounceableText = PronounceableTextLeaf | ArabicText | EnglishText | string;
 
@@ -110,7 +110,7 @@ interface ThingBase extends Partial<IdReference> {
     "website"?: SchemaValue<URL>;
 }
 interface ThingLeaf extends ThingBase {
-    "@type": "Thing";
+    "$type": "Thing";
 }
 export type Thing = ThingLeaf;
 

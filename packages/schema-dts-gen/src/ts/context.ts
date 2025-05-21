@@ -97,7 +97,7 @@ export class Context {
   contextProperty(): PropertySignature {
     return factory.createPropertySignature(
       /*modifiers=*/ [],
-      factory.createStringLiteral('@context'),
+      factory.createStringLiteral('$context'),
       /*questionToken=*/ undefined,
       this.typeNode(),
     );

@@ -381,7 +381,7 @@ export class Class {
     // };
     // // Leaf:
     // export type XyzLeaf = XyzBase & {
-    //   '@type': 'Xyz'
+    //   '$type': 'Xyz'
     // }
     // // Complete Type ----------------------------//
     // export type Xyz = "Enum1"|"Enum2"|...        // Enum Piece: Optional.

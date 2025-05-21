@@ -51,16 +51,16 @@ test(`baseline_${basename(import.meta.url)}`, async () => {
   expect(actual).toMatchInlineSnapshot(`
 "/** Used at the top-level node to indicate the context for the JSON-LD objects used. The context provided in this type is compatible with the keys and URLs in the rest of this generated file. */
 export type WithContext<T extends Thing> = T & {
-    "@context": "https://schema.org";
+    "$context": "https://schema.org";
 };
 export interface Graph {
-    "@context": "https://schema.org";
-    "@graph": readonly Thing[];
+    "$context": "https://schema.org";
+    "$graph": readonly Thing[];
 }
 type SchemaValue<T, TProperty extends string> = T | Role<T, TProperty> | readonly (T | Role<T, TProperty>)[];
 type IdReference = {
     /** IRI identifying the canonical address of this object. */
-    "@id": string;
+    "$id": string;
 };
 type InputActionConstraints<T extends ActionBase> = Partial<{
     [K in Exclude<keyof T, \`@\${string}\`> as \`\${string & K}-input\`]: PropertyValueSpecification | string;
@@ -74,12 +74,12 @@ export type WithActionConstraints<T extends ActionBase> = T & InputActionConstra
 interface DateTimeBase extends Partial<IdReference> {
 }
 interface DateTimeLeaf extends DateTimeBase {
-    "@type": "DateTime";
+    "$type": "DateTime";
 }
 export type DateTime = DateTimeLeaf | string;
 
 type OrganizationRoleLeaf<TContent, TProperty extends string> = RoleBase & {
-    "@type": "OrganizationRole";
+    "$type": "OrganizationRole";
 } & {
     [key in TProperty]: TContent;
 };
@@ -89,7 +89,7 @@ interface RoleBase extends ThingBase {
     "startDate"?: SchemaValue<DateTime | IdReference, "startDate">;
 }
 type RoleLeaf<TContent, TProperty extends string> = RoleBase & {
-    "@type": "Role";
+    "$type": "Role";
 } & {
     [key in TProperty]: TContent;
 };
@@ -103,7 +103,7 @@ export type Role<TContent = never, TProperty extends string = never> = RoleLeaf<
 export type Text = string;
 
 interface IntangibleLeaf extends ThingBase {
-    "@type": "Intangible";
+    "$type": "Intangible";
 }
 export type Intangible = IntangibleLeaf | Role;
 
@@ -111,7 +111,7 @@ interface ThingBase extends Partial<IdReference> {
     "name"?: SchemaValue<Text, "name">;
 }
 interface ThingLeaf extends ThingBase {
-    "@type": "Thing";
+    "$type": "Thing";
 }
 export type Thing = ThingLeaf | Intangible;
 
