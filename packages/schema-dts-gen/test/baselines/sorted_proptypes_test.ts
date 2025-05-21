@@ -54,16 +54,16 @@ test(`baseline_${basename(import.meta.url)}`, async () => {
   expect(actual).toMatchInlineSnapshot(`
 "/** Used at the top-level node to indicate the context for the JSON-LD objects used. The context provided in this type is compatible with the keys and URLs in the rest of this generated file. */
 export type WithContext<T extends Thing> = T & {
-    "@context": "https://schema.org";
+    "$context": "https://schema.org";
 };
 export interface Graph {
-    "@context": "https://schema.org";
-    "@graph": readonly Thing[];
+    "$context": "https://schema.org";
+    "$graph": readonly Thing[];
 }
 type SchemaValue<T> = T | readonly T[];
 type IdReference = {
     /** IRI identifying the canonical address of this object. */
-    "@id": string;
+    "$id": string;
 };
 type InputActionConstraints<T extends ActionBase> = Partial<{
     [K in Exclude<keyof T, \`@\${string}\`> as \`\${string & K}-input\`]: PropertyValueSpecification | string;
@@ -90,7 +90,7 @@ interface ThingBase extends Partial<IdReference> {
     "a"?: SchemaValue<Boolean | Date | DateTime | Number | Text | Time>;
 }
 interface ThingLeaf extends ThingBase {
-    "@type": "Thing";
+    "$type": "Thing";
 }
 export type Thing = ThingLeaf;
 

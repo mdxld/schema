@@ -18,7 +18,7 @@ function IdPropertyNode() {
     'IRI identifying the canonical address of this object.',
     factory.createPropertySignature(
       /* modifiers= */ [],
-      factory.createStringLiteral('@id'),
+      factory.createStringLiteral('$id'),
       /* questionToken= */ undefined,
       /* typeNode= */
       factory.createTypeReferenceNode('string', /*typeArguments=*/ []),
@@ -65,7 +65,7 @@ function GraphType(context: Context) {
         context.contextProperty(),
         factory.createPropertySignature(
           /*modifiers=*/ [],
-          factory.createStringLiteral('@graph'),
+          factory.createStringLiteral('$graph'),
           /*questionToken=*/ undefined,
           factory.createTypeOperatorNode(
             SyntaxKind.ReadonlyKeyword,

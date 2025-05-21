@@ -39,7 +39,7 @@ Then you can use it by importing `"schema-dts"`.
 
 ### Root context
 
-You will usually want your top-level item to include a `@context`, like
+You will usually want your top-level item to include a `$context`, like
 `https://schema.org`. In order for your object type to accept this property, you
 can augment it with `WithContext`, e.g.:
 
@@ -47,11 +47,11 @@ can augment it with `WithContext`, e.g.:
 import type {Person, WithContext} from 'schema-dts';
 
 const p: WithContext<Person> = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
+  $context: 'https://schema.org',
+  $type: 'Person',
   name: 'Eve',
   affiliation: {
-    '@type': 'School',
+    $type: 'School',
     name: 'Nice School',
   },
 };
@@ -59,59 +59,59 @@ const p: WithContext<Person> = {
 
 ### Graphs and IDs
 
-JSON-LD supports `'@graph'` objects that have richer interconnected links
+JSON-LD supports `'$graph'` objects that have richer interconnected links
 between the nodes. You can do that easily in `schema-dts` by using the `Graph`
 type.
 
-Notice that any node can have an `@id` when defining it. And you can reference
+Notice that any node can have an `$id` when defining it. And you can reference
 the same node from different places by simply using an ID stub, for example
-`{ '@id': 'https://my.site/about/#page }` below is an ID stub.
+`{ '$id': 'https://my.site/about/#page }` below is an ID stub.
 
 The example below shows potential JSON-LD for an About page. It includes
 definitions of Alyssa P. Hacker (the author & subject of the page), the specific
 page in this URL, and the website it belongs to. Some objects are still defined
 as inline nested objects (e.g. Occupation), since they are only referenced by
-their parent. Other objects are defined at the top-level with an `@id`, because
+their parent. Other objects are defined at the top-level with an `$id`, because
 multiple nodes refer to them.
 
 ```ts
 import type {Graph} from 'schema-dts';
 
 const graph: Graph = {
-  '@context': 'https://schema.org',
-  '@graph': [
+  $context: 'https://schema.org',
+  $graph: [
     {
-      '@type': 'Person',
-      '@id': 'https://my.site/#alyssa',
+      $type: 'Person',
+      $id: 'https://my.site/#alyssa',
       name: 'Alyssa P. Hacker',
       hasOccupation: {
-        '@type': 'Occupation',
+        $type: 'Occupation',
         name: 'LISP Hacker',
         qualifications: 'Knows LISP',
       },
-      mainEntityOfPage: {'@id': 'https://my.site/about/#page'},
-      subjectOf: {'@id': 'https://my.site/about/#page'},
+      mainEntityOfPage: {$id: 'https://my.site/about/#page'},
+      subjectOf: {$id: 'https://my.site/about/#page'},
     },
     {
-      '@type': 'AboutPage',
-      '@id': 'https://my.site/#site',
+      $type: 'AboutPage',
+      $id: 'https://my.site/#site',
       url: 'https://my.site',
       name: "Alyssa P. Hacker's Website",
       inLanguage: 'en-US',
       description: 'The personal website of LISP legend Alyssa P. Hacker',
-      mainEntity: {'@id': 'https://my.site/#alyssa'},
+      mainEntity: {$id: 'https://my.site/#alyssa'},
     },
     {
-      '@type': 'WebPage',
-      '@id': 'https://my.site/about/#page',
+      $type: 'WebPage',
+      $id: 'https://my.site/about/#page',
       url: 'https://my.site/about/',
       name: "About | Alyssa P. Hacker's Website",
       inLanguage: 'en-US',
       isPartOf: {
-        '@id': 'https://my.site/#site',
+        $id: 'https://my.site/#site',
       },
-      about: {'@id': 'https://my.site/#alyssa'},
-      mainEntity: {'@id': 'https://my.site/#alyssa'},
+      about: {$id: 'https://my.site/#alyssa'},
+      mainEntity: {$id: 'https://my.site/#alyssa'},
     },
   ],
 };
@@ -128,7 +128,7 @@ type you want to annotate. See the following examples:
 import type {SearchAction, WithActionConstraints} from 'schema-dts';
 
 const potentialAction: WithActionConstraints<SearchAction> = {
-  '@type': 'SearchAction',
+  $type: 'SearchAction',
   'query-input': 'required name=search_term_string',
   // ...
 };
@@ -138,9 +138,9 @@ const potentialAction: WithActionConstraints<SearchAction> = {
 import type {SearchAction, WebSite, WithActionConstraints} from 'schema-dts';
 
 const website: WebSite = {
-  '@type': 'WebSite',
+  $type: 'WebSite',
   potentialAction: {
-    '@type': 'SearchAction',
+    $type: 'SearchAction',
     'query-input': 'required name=search_term_string',
   } as WithActionConstraints<SearchAction>,
 };
@@ -165,13 +165,13 @@ Command line usage:
     specifying a top-level `Thing` type.
 
 - **`--context`**: Defaults to `https://schema.org`, the value or values to be
-  used with the `"@context"` property.
+  used with the `"$context"` property.
 
   Can be either a single URL, or a comma separated list of two or more name:URL
   pairs.
 
   The context affects names of string properties in types, as well as the values
-  of an object's `"@type"`.
+  of an object's `"$type"`.
 
 - **`--deprecated`**/**`--nodeprecated`**: Whether or not to include deprecated
   Schema.org types and properties. When included, these types will still be

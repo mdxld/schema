@@ -169,7 +169,7 @@ export class TypeProperty {
   toNode(context: Context) {
     return factory.createPropertySignature(
       /* modifiers= */ [],
-      factory.createStringLiteral('@type'),
+      factory.createStringLiteral('$type'),
       /* questionToken= */ undefined,
       /* typeNode= */
       factory.createTypeReferenceNode(

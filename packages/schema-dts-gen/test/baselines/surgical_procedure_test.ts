@@ -76,16 +76,16 @@ test(`baseline_${basename(import.meta.url)}`, async () => {
   expect(actual).toMatchInlineSnapshot(`
 "/** Used at the top-level node to indicate the context for the JSON-LD objects used. The context provided in this type is compatible with the keys and URLs in the rest of this generated file. */
 export type WithContext<T extends Thing> = T & {
-    "@context": "https://schema.org";
+    "$context": "https://schema.org";
 };
 export interface Graph {
-    "@context": "https://schema.org";
-    "@graph": readonly Thing[];
+    "$context": "https://schema.org";
+    "$graph": readonly Thing[];
 }
 type SchemaValue<T> = T | readonly T[];
 type IdReference = {
     /** IRI identifying the canonical address of this object. */
-    "@id": string;
+    "$id": string;
 };
 type InputActionConstraints<T extends ActionBase> = Partial<{
     [K in Exclude<keyof T, \`@\${string}\`> as \`\${string & K}-input\`]: PropertyValueSpecification | string;
@@ -97,69 +97,69 @@ type OutputActionConstraints<T extends ActionBase> = Partial<{
 export type WithActionConstraints<T extends ActionBase> = T & InputActionConstraints<T> & OutputActionConstraints<T>;
 
 interface DiagnosticProcedureLeaf extends ThingBase {
-    "@type": "DiagnosticProcedure";
+    "$type": "DiagnosticProcedure";
 }
 export type DiagnosticProcedure = DiagnosticProcedureLeaf;
 
 interface EnumerationLeaf extends ThingBase {
-    "@type": "Enumeration";
+    "$type": "Enumeration";
 }
 export type Enumeration = EnumerationLeaf | MedicalEnumeration;
 
 interface IntangibleLeaf extends ThingBase {
-    "@type": "Intangible";
+    "$type": "Intangible";
 }
 export type Intangible = IntangibleLeaf | Enumeration;
 
 interface MedicalEntityLeaf extends ThingBase {
-    "@type": "MedicalEntity";
+    "$type": "MedicalEntity";
 }
 export type MedicalEntity = MedicalEntityLeaf | MedicalProcedure;
 
 interface MedicalEnumerationLeaf extends ThingBase {
-    "@type": "MedicalEnumeration";
+    "$type": "MedicalEnumeration";
 }
 export type MedicalEnumeration = MedicalEnumerationLeaf | MedicalProcedureType | PhysicalExam;
 
 interface MedicalProcedureLeaf extends ThingBase {
-    "@type": "MedicalProcedure";
+    "$type": "MedicalProcedure";
 }
 /** A process of care used in either a diagnostic, therapeutic, preventive or palliative capacity that relies on invasive (surgical), non-invasive, or other techniques. */
 export type MedicalProcedure = MedicalProcedureLeaf | DiagnosticProcedure | PalliativeProcedure | PhysicalExam | SurgicalProcedure | TherapeuticProcedure;
 
 interface MedicalProcedureTypeLeaf extends ThingBase {
-    "@type": "MedicalProcedureType";
+    "$type": "MedicalProcedureType";
 }
 /** An enumeration that describes different types of medical procedures. */
 export type MedicalProcedureType = "http://schema.org/NoninvasiveProcedure" | "https://schema.org/NoninvasiveProcedure" | "NoninvasiveProcedure" | "http://schema.org/PercutaneousProcedure" | "https://schema.org/PercutaneousProcedure" | "PercutaneousProcedure" | MedicalProcedureTypeLeaf;
 
 interface MedicalTherapyLeaf extends ThingBase {
-    "@type": "MedicalTherapy";
+    "$type": "MedicalTherapy";
 }
 export type MedicalTherapy = MedicalTherapyLeaf | PalliativeProcedure;
 
 interface PalliativeProcedureBase extends ThingBase, ThingBase {
 }
 interface PalliativeProcedureLeaf extends PalliativeProcedureBase {
-    "@type": "PalliativeProcedure";
+    "$type": "PalliativeProcedure";
 }
 export type PalliativeProcedure = PalliativeProcedureLeaf;
 
 interface PhysicalExamBase extends ThingBase, ThingBase {
 }
 interface PhysicalExamLeaf extends PhysicalExamBase {
-    "@type": "PhysicalExam";
+    "$type": "PhysicalExam";
 }
 export type PhysicalExam = "http://schema.org/Head" | "https://schema.org/Head" | "Head" | "http://schema.org/Neuro" | "https://schema.org/Neuro" | "Neuro" | PhysicalExamLeaf;
 
 interface SurgicalProcedureLeaf extends ThingBase {
-    "@type": "SurgicalProcedure";
+    "$type": "SurgicalProcedure";
 }
 /** A medical procedure involving an incision with instruments; performed for diagnose, or therapeutic purposes. */
 export type SurgicalProcedure = SurgicalProcedureLeaf;
 
 interface TherapeuticProcedureLeaf extends ThingBase {
-    "@type": "TherapeuticProcedure";
+    "$type": "TherapeuticProcedure";
 }
 export type TherapeuticProcedure = TherapeuticProcedureLeaf | MedicalTherapy;
 
@@ -167,7 +167,7 @@ interface ThingBase extends Partial<IdReference> {
     "procedureType"?: SchemaValue<MedicalProcedureType | IdReference>;
 }
 interface ThingLeaf extends ThingBase {
-    "@type": "Thing";
+    "$type": "Thing";
 }
 export type Thing = ThingLeaf | Intangible | MedicalEntity;
 

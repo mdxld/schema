@@ -43,16 +43,16 @@ test(`baseline_mixedOWL1_${basename(import.meta.url)}`, async () => {
   expect(actual).toMatchInlineSnapshot(`
 "/** Used at the top-level node to indicate the context for the JSON-LD objects used. The context provided in this type is compatible with the keys and URLs in the rest of this generated file. */
 export type WithContext<T extends Thing> = T & {
-    "@context": "https://schema.org";
+    "$context": "https://schema.org";
 };
 export interface Graph {
-    "@context": "https://schema.org";
-    "@graph": readonly Thing[];
+    "$context": "https://schema.org";
+    "$graph": readonly Thing[];
 }
 type SchemaValue<T> = T | readonly T[];
 type IdReference = {
     /** IRI identifying the canonical address of this object. */
-    "@id": string;
+    "$id": string;
 };
 type InputActionConstraints<T extends ActionBase> = Partial<{
     [K in Exclude<keyof T, \`@\${string}\`> as \`\${string & K}-input\`]: PropertyValueSpecification | string;
@@ -67,7 +67,7 @@ export type WithActionConstraints<T extends ActionBase> = T & InputActionConstra
 export type Text = string;
 
 interface PersonLeaf extends ThingBase {
-    "@type": "Person";
+    "$type": "Person";
 }
 /** ABC */
 export type Person = PersonLeaf | string;
@@ -76,7 +76,7 @@ interface ThingBase extends Partial<IdReference> {
     "name"?: SchemaValue<Text>;
 }
 interface ThingLeaf extends ThingBase {
-    "@type": "Thing";
+    "$type": "Thing";
 }
 /** ABC */
 export type Thing = ThingLeaf | Person;
@@ -108,16 +108,16 @@ test(`baseline_mixedOWL2_${basename(import.meta.url)}`, async () => {
   expect(actual).toMatchInlineSnapshot(`
 "/** Used at the top-level node to indicate the context for the JSON-LD objects used. The context provided in this type is compatible with the keys and URLs in the rest of this generated file. */
 export type WithContext<T extends Thing> = T & {
-    "@context": "https://schema.org";
+    "$context": "https://schema.org";
 };
 export interface Graph {
-    "@context": "https://schema.org";
-    "@graph": readonly Thing[];
+    "$context": "https://schema.org";
+    "$graph": readonly Thing[];
 }
 type SchemaValue<T> = T | readonly T[];
 type IdReference = {
     /** IRI identifying the canonical address of this object. */
-    "@id": string;
+    "$id": string;
 };
 type InputActionConstraints<T extends ActionBase> = Partial<{
     [K in Exclude<keyof T, \`@\${string}\`> as \`\${string & K}-input\`]: PropertyValueSpecification | string;
@@ -132,7 +132,7 @@ export type WithActionConstraints<T extends ActionBase> = T & InputActionConstra
 export type Text = string;
 
 interface PersonLeaf extends ThingBase {
-    "@type": "Person";
+    "$type": "Person";
 }
 /** ABC */
 export type Person = PersonLeaf | string;
@@ -141,7 +141,7 @@ interface ThingBase extends Partial<IdReference> {
     "name"?: SchemaValue<Text>;
 }
 interface ThingLeaf extends ThingBase {
-    "@type": "Thing";
+    "$type": "Thing";
 }
 /** ABC */
 export type Thing = ThingLeaf | Person;
@@ -178,16 +178,16 @@ test(`baseline_OWLenum_${basename(import.meta.url)}`, async () => {
   expect(actual).toMatchInlineSnapshot(`
 "/** Used at the top-level node to indicate the context for the JSON-LD objects used. The context provided in this type is compatible with the keys and URLs in the rest of this generated file. */
 export type WithContext<T extends Thing> = T & {
-    "@context": "https://schema.org";
+    "$context": "https://schema.org";
 };
 export interface Graph {
-    "@context": "https://schema.org";
-    "@graph": readonly Thing[];
+    "$context": "https://schema.org";
+    "$graph": readonly Thing[];
 }
 type SchemaValue<T> = T | readonly T[];
 type IdReference = {
     /** IRI identifying the canonical address of this object. */
-    "@id": string;
+    "$id": string;
 };
 type InputActionConstraints<T extends ActionBase> = Partial<{
     [K in Exclude<keyof T, \`@\${string}\`> as \`\${string & K}-input\`]: PropertyValueSpecification | string;
@@ -204,12 +204,12 @@ export type Text = string;
 interface MyEnumBase extends Partial<IdReference> {
 }
 interface MyEnumLeaf extends MyEnumBase {
-    "@type": "http://www.w3.org/2002/07/owl#MyEnum";
+    "$type": "http://www.w3.org/2002/07/owl#MyEnum";
 }
 export type MyEnum = "http://www.w3.org/2002/07/owl#EnumValueA" | "https://www.w3.org/2002/07/owl#EnumValueA" | "http://www.w3.org/2002/07/owl#EnumValueB" | "https://www.w3.org/2002/07/owl#EnumValueB" | MyEnumLeaf;
 
 interface PersonLeaf extends ThingBase {
-    "@type": "Person";
+    "$type": "Person";
 }
 /** ABC */
 export type Person = PersonLeaf | string;
@@ -218,7 +218,7 @@ interface ThingBase extends Partial<IdReference> {
     "name"?: SchemaValue<Text>;
 }
 interface ThingLeaf extends ThingBase {
-    "@type": "Thing";
+    "$type": "Thing";
 }
 /** ABC */
 export type Thing = ThingLeaf | Person;

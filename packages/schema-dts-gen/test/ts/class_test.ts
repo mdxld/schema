@@ -71,13 +71,13 @@ describe('Class', () => {
       const ctx = new Context();
       ctx.setUrlContext('https://schema.org/');
       expect(asString(cls, ctx)).toMatchInlineSnapshot(`
-        "interface PersonBase extends Partial<IdReference> {
-        }
-        interface PersonLeaf extends PersonBase {
-            "@type": "Person";
-        }
-        export type Person = PersonLeaf;"
-      `);
+"interface PersonBase extends Partial<IdReference> {
+}
+interface PersonLeaf extends PersonBase {
+    "$type": "Person";
+}
+export type Person = PersonLeaf;"
+`);
     });
 
     it('empty (with parent)', () => {
@@ -86,11 +86,11 @@ describe('Class', () => {
       addParent(cls, 'https://schema.org/Thing');
 
       expect(asString(cls, ctx)).toMatchInlineSnapshot(`
-        "interface PersonLeaf extends ThingBase {
-            "@type": "Person";
-        }
-        export type Person = PersonLeaf;"
-      `);
+"interface PersonLeaf extends ThingBase {
+    "$type": "Person";
+}
+export type Person = PersonLeaf;"
+`);
     });
 
     it('empty (two parents)', () => {
@@ -100,13 +100,13 @@ describe('Class', () => {
       addParent(cls, 'https://schema.org/Thing2');
 
       expect(asString(cls, ctx)).toMatchInlineSnapshot(`
-        "interface PersonBase extends Thing1Base, Thing2Base {
-        }
-        interface PersonLeaf extends PersonBase {
-            "@type": "Person";
-        }
-        export type Person = PersonLeaf;"
-      `);
+"interface PersonBase extends Thing1Base, Thing2Base {
+}
+interface PersonLeaf extends PersonBase {
+    "$type": "Person";
+}
+export type Person = PersonLeaf;"
+`);
     });
 
     it('deprecated once (only)', () => {
@@ -126,12 +126,12 @@ describe('Class', () => {
       ).toBe(true);
 
       expect(asString(cls, ctx)).toMatchInlineSnapshot(`
-        "interface PersonLeaf extends ThingBase {
-            "@type": "Person";
-        }
-        /** @deprecated Use CoolPerson instead. */
-        export type Person = PersonLeaf;"
-      `);
+"interface PersonLeaf extends ThingBase {
+    "$type": "Person";
+}
+/** @deprecated Use CoolPerson instead. */
+export type Person = PersonLeaf;"
+`);
     });
 
     it('deprecated twice (alphabetical)', () => {
@@ -168,12 +168,12 @@ describe('Class', () => {
       ).toBe(true);
 
       expect(asString(cls, ctx)).toMatchInlineSnapshot(`
-        "interface PersonLeaf extends ThingBase {
-            "@type": "Person";
-        }
-        /** @deprecated Use APerson or CoolPerson instead. */
-        export type Person = PersonLeaf;"
-      `);
+"interface PersonLeaf extends ThingBase {
+    "$type": "Person";
+}
+/** @deprecated Use APerson or CoolPerson instead. */
+export type Person = PersonLeaf;"
+`);
     });
 
     it('deprecated with comment', () => {
@@ -199,16 +199,16 @@ describe('Class', () => {
       ).toBe(true);
 
       expect(asString(cls, ctx)).toMatchInlineSnapshot(`
-        "interface PersonLeaf extends ThingBase {
-            "@type": "Person";
-        }
-        /**
-         * Fantastic
-         *
-         * @deprecated Use CoolPerson instead.
-         */
-        export type Person = PersonLeaf;"
-      `);
+"interface PersonLeaf extends ThingBase {
+    "$type": "Person";
+}
+/**
+ * Fantastic
+ *
+ * @deprecated Use CoolPerson instead.
+ */
+export type Person = PersonLeaf;"
+`);
     });
 
     it('complains about bad comment markup', () => {
@@ -253,19 +253,19 @@ describe('Class', () => {
       cls.addProp(makeProperty('https://abc.com'));
 
       expect(asString(cls, ctx)).toMatchInlineSnapshot(`
-        "interface ABase extends Partial<IdReference> {
-            "https://abc.com"?: SchemaValue<never>;
-            "schema:"?: SchemaValue<never>;
-            "schema:a"?: SchemaValue<never>;
-            "schema:b"?: SchemaValue<never>;
-            "schema:c"?: SchemaValue<never>;
-            "https://abc.com/e"?: SchemaValue<never>;
-        }
-        interface ALeaf extends ABase {
-            "@type": "schema:A";
-        }
-        export type A = ALeaf;"
-      `);
+"interface ABase extends Partial<IdReference> {
+    "https://abc.com"?: SchemaValue<never>;
+    "schema:"?: SchemaValue<never>;
+    "schema:a"?: SchemaValue<never>;
+    "schema:b"?: SchemaValue<never>;
+    "schema:c"?: SchemaValue<never>;
+    "https://abc.com/e"?: SchemaValue<never>;
+}
+interface ALeaf extends ABase {
+    "$type": "schema:A";
+}
+export type A = ALeaf;"
+`);
     });
   });
 });

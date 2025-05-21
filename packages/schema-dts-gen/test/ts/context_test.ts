@@ -37,7 +37,7 @@ describe('WithContext generation', () => {
     ctx.setUrlContext('https://foo.com');
 
     expect(asString(ctx.contextProperty())).toBe(
-      `"@context": "https://foo.com";`,
+      `"$context": "https://foo.com";`,
     );
   });
 
@@ -47,7 +47,7 @@ describe('WithContext generation', () => {
     ctx.addNamedContext('b', 'https://bar.com');
 
     expect(asString(ctx.contextProperty())).toBe(
-      `"@context": {
+      `"$context": {
     "a": "https://foo.com";
     "b": "https://bar.com";
 };`,
