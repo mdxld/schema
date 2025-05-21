@@ -22,8 +22,8 @@ const _4: WithActionConstraints<SearchAction> = {
 
 const _5: WebSite = {
   $type: 'WebSite',
-  potentialAction: {
+  potentialAction: ({
     $type: 'SearchAction',
     'query-input': 'required name=search_term_string',
-  } as WithActionConstraints<SearchAction>,
+  } satisfies WithActionConstraints<SearchAction>),
 };
