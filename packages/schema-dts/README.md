@@ -1,37 +1,36 @@
 [![Build Status](https://github.com/google/schema-dts/actions/workflows/ci.yml/badge.svg)](https://github.com/google/schema-dts/actions/workflows/ci.yml)
-[![Coverage Status](https://coveralls.io/repos/github/google/schema-dts/badge.svg?branch=main)](https://coveralls.io/github/google/schema-dts?branch=main)
+[![Coverage Status](https://coveralls.io/repos/github/mdxld/schema/badge.svg?branch=main)](https://coveralls.io/github/mdxld/schema?branch=main)
 [![schema-dts npm version](https://badge.fury.io/js/schema-dts.svg)](https://www.npmjs.com/package/schema-dts)
 
-# schema-dts
+# @mdxld/schema
 
-JSON-LD TypeScript types for Schema.org vocabulary.
+MDXLD TypeScript types for Schema.org vocabulary.
 
 **schema-dts** provides TypeScript definitions for
 [Schema.org](https://schema.org/) vocabulary in JSON-LD format. The typings are
 exposed as complete sets of discriminated type unions, allowing for easy
 completions and stricter validation.
 
-![Example of Code Completion using schema-dts](https://raw.githubusercontent.com/google/schema-dts/HEAD/example-1.gif)
+![Example of Code Completion using schema-dts](https://raw.githubusercontent.com/mdxld/schema/HEAD/example-1.gif)
 
-Note: This is not an officially supported Google product.
 
 ## Usage
 
-To use the typings for your project, simply add the `schema-dts` NPM package to
+To use the typings for your project, simply add the `@mdxld/schema` NPM package to
 your project:
 
 ```command
-npm install schema-dts
+npm install @mdxld/schema
 ```
 
-Then you can use it by importing `"schema-dts"`.
+Then you can use it by importing `"@mdxld/schema"`.
 
 ## Examples
 
 ### Defining Simple Properties
 
 ```ts
-import type {Person} from 'schema-dts';
+import type {Person} from '@mdxld/schema';
 
 const inventor: Person = {
   $type: 'Person',
@@ -51,10 +50,10 @@ const inventor: Person = {
 
 JSON-LD requires a `"$context"` property to be set on the top-level JSON object,
 to describe the URIs represeting the types and properties being referenced.
-schema-dts provides the `WithContext<T>` type to facilitate this.
+`@mdxld/schema` provides the `WithContext<T>` type to facilitate this.
 
 ```ts
-import type {Organization, Thing, WithContext} from 'schema-dts';
+import type {Organization, Thing, WithContext} from '@mdxld/schema';
 
 export function JsonLd<T extends Thing>(json: WithContext<T>): string {
   return `<script type="application/ld+json">
@@ -72,7 +71,7 @@ export const MY_ORG = JsonLd<Organization>({
 ### Graphs and IDs
 
 JSON-LD supports `'$graph'` objects that have richer interconnected links
-between the nodes. You can do that easily in `schema-dts` by using the `Graph`
+between the nodes. You can do that easily in `@mdxld/schema` by using the `Graph`
 type.
 
 Notice that any node can have an `$id` when defining it. And you can reference
@@ -87,7 +86,7 @@ their parent. Other objects are defined at the top-level with an `$id`, because
 multiple nodes refer to them.
 
 ```ts
-import type {Graph} from 'schema-dts';
+import type {Graph} from '@mdxld/schema';
 
 const graph: Graph = {
   $context: 'https://schema.org',
