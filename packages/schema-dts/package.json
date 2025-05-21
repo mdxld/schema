@@ -1,15 +1,9 @@
 {
-  "name": "schema-dts",
+  "name": "@mdxld/schema",
   "version": "1.1.5",
-  "displayName": "schema-dts: Strongly-typed Schema.org vocabulary declarations",
+  "displayName": "@mdxld/schema: Strongly-typed Schema.org vocabulary declarations",
   "description": "A TypeScript package with latest Schema.org Schema Typings",
-  "author": "Eyas Sharaiha <eyas@google.com> (https://eyas.sh/)",
-  "maintainers": [
-    "Eyas Sharaiha <npm@eyas.sh> (https://eyas.sh/)"
-  ],
-  "contributors": [
-    "Eyas Sharaiha <npm@eyas.sh> (https://eyas.sh/)"
-  ],
+  "author": "Nathan Clevenger",
   "files": [
     "dist/schema.d.ts",
     "dist/schema.js",
@@ -36,12 +30,12 @@
     "structured data",
     "structured-data"
   ],
-  "homepage": "https://opensource.google/projects/schema-dts",
-  "bugs": "https://github.com/google/schema-dts/issues",
+  "homepage": "https://mdxld.org",
+  "bugs": "https://github.com/mdxld/schema/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/google/schema-dts.git",
-    "directory": "packages/schema-dts"
+    "url": "https://github.com/mdxld/schema.git",
+    "directory": "packages/schema"
   },
   "scripts": {
     "lint:eslint": "eslint test/**/*.ts",
