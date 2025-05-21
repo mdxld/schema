@@ -13,11 +13,10 @@ completions and stricter validation.
 
 ![Example of Code Completion using schema-dts](https://raw.githubusercontent.com/mdxld/schema/HEAD/example-1.gif)
 
-
 ## Usage
 
-To use the typings for your project, simply add the `@mdxld/schema` NPM package to
-your project:
+To use the typings for your project, simply add the `@mdxld/schema` NPM package
+to your project:
 
 ```command
 npm install @mdxld/schema
@@ -71,8 +70,8 @@ export const MY_ORG = JsonLd<Organization>({
 ### Graphs and IDs
 
 JSON-LD supports `'$graph'` objects that have richer interconnected links
-between the nodes. You can do that easily in `@mdxld/schema` by using the `Graph`
-type.
+between the nodes. You can do that easily in `@mdxld/schema` by using the
+`Graph` type.
 
 Notice that any node can have an `$id` when defining it. And you can reference
 the same node from different places by simply using an ID stub, for example
