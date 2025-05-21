@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import {SearchAction, WebSite, WithActionConstraints} from '../dist/schema';
 
 // @ts-expect-error Missing '$type'
